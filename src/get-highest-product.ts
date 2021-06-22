@@ -10,37 +10,37 @@ export const getHighestProduct = (numberList: number[]): number => {
 
 // Doesn't use sort method for performance reasons <- forEach calls the callbackfn function one time only for each element in the array
 export const getHighestProductCustom = (numberList: number[]): number => {
-  const filteredList: number[] = [];
+  const sortedList: number[] = [];
 
   numberList.forEach((number: number) => {
-    if (!filteredList.length) {
-      filteredList.push(number);
+    if (!sortedList.length) {
+      sortedList.push(number);
       return;
     }
 
-    if (number < (filteredList[2] || 0)) return;
+    if (number < (sortedList[2] || 0)) return;
 
-    if (number > (filteredList[0] || 0)) {
-      filteredList.unshift(number);
+    if (number > (sortedList[0] || 0)) {
+      sortedList.unshift(number);
       return;
     }
 
-    if (number > (filteredList[1] || 0)) {
-      filteredList[1] !== undefined
-        ? filteredList.splice(1, 0, number)
-        : filteredList.push(number);
+    if (number > (sortedList[1] || 0)) {
+      sortedList[1] !== undefined
+        ? sortedList.splice(1, 0, number)
+        : sortedList.push(number);
       return;
     }
 
-    if (number > (filteredList[2] || 0)) {
-      filteredList[2] !== undefined
-        ? filteredList.splice(2, 0, number)
-        : filteredList.push(number);
+    if (number > (sortedList[2] || 0)) {
+      sortedList[2] !== undefined
+        ? sortedList.splice(2, 0, number)
+        : sortedList.push(number);
       return;
     }
   });
 
-  return filteredList[0] * filteredList[1] * filteredList[2];
+  return sortedList[0] * sortedList[1] * sortedList[2];
 };
 
 // Works also with negative numbers
@@ -50,7 +50,7 @@ export const getHighestProductPro = (numberList: number[]): number => {
 
   if (!isNegativeNumbersEligible) return getHighestProductCustom(numberList);
 
-// Could be replaced if it causes performance issues <- depending on the size of numberList
+  // Could be replaced if it causes performance issues <- depending on the size of numberList
   const sortedList = sortList(numberList);
   const lastElementIndex = sortedList.length - 1;
 
