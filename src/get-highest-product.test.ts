@@ -2,7 +2,7 @@ import {
   getHighestProduct,
   getHighestProductCustom,
   sortList,
-  getHighestProductPro
+  getHighestProductPro,
 } from "./get-highest-product";
 
 test("returns a list sorted in descending order", () => {
@@ -28,7 +28,7 @@ test("returns the highest product between three of given numbers - handles also 
 });
 
 test("returns the highest product between three of given numbers - handles also negative numbers", () => {
-  expect(getHighestProductPro([-6, -9,-1, 5, 1, 0, 2])).toBe(270);
+  expect(getHighestProductPro([-6, -9, -1, 5, 1, 0, 2])).toBe(270);
 });
 
 test("returns the highest product between three of given numbers - handles also negative numbers", () => {
